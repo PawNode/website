@@ -11,6 +11,9 @@ cd jsip
 rm -rf dist
 npm i
 npm run build
+rm -rf dist/test
+
+(find ./dist -type f -name "*.js" -exec echo "add_header Link \"</{}>; rel=preload; as=script\";" \; | sed s~/./~/~) > "$WDIR/conf/nginx-push.conf"
 
 cd "$WDIR"
 
