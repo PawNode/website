@@ -3,8 +3,7 @@
 :INPUT ACCEPT [0:0]
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [0:0]
--A INPUT -i tun+ -j DROP
--A INPUT -i tap+ -j DROP
+-A INPUT -i tap-ws0 -j DROP
 COMMIT
 # Completed on Fri Oct 19 17:48:18 2018
 

@@ -1,11 +1,13 @@
 FROM alpine
 
-RUN apk add --no-cache nginx shadow dhcp unbound
+RUN apk add --no-cache nginx shadow dhcp unbound iptables ip6tables
 RUN groupadd -g 1000 wsvpn && useradd -u 1000 -g 1000 wsvpn && mkdir -p /home/wsvpn && chown wsvpn:wsvpn /home/wsvpn
 
 COPY conf/minit_services /minit/services
 COPY conf/minit_onboot /minit/onboot
 COPY minit/minit /minit/minit
+COPY conf/iptables.v4 /minit/iptables.v4
+COPY conf/iptables.v6 /minit/iptables.v6
 
 COPY jsip/dist/ /var/www/html/dist/
 COPY jsip_app/index.html /var/www/html/

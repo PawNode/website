@@ -5,8 +5,7 @@
 :OUTPUT ACCEPT [6:322]
 :TAPFILTER - [0:0]
 :TUNFILTER - [0:0]
--A INPUT -i tun+ -j TUNFILTER
--A INPUT -i tap+ -j TAPFILTER
+-A INPUT -i tap-ws0 -j TAPFILTER
 -A TAPFILTER -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A TAPFILTER -p udp -m udp --sport 68 --dport 67 -j ACCEPT
 -A TAPFILTER ! -s 10.0.0.0/8 -j DROP
@@ -14,11 +13,6 @@
 -A TAPFILTER -p udp -m udp --dport 53 -j ACCEPT
 -A TAPFILTER -p icmp -j ACCEPT
 -A TAPFILTER -j DROP
--A TUNFILTER -m state --state RELATED,ESTABLISHED -j ACCEPT
--A TUNFILTER ! -s 10.0.0.0/8 -j DROP
--A TUNFILTER -p tcp -m tcp --dport 80 -j ACCEPT
--A TUNFILTER -p icmp -j ACCEPT
--A TUNFILTER -j DROP
 COMMIT
 # Completed on Mon Oct 22 00:36:03 2018
 
