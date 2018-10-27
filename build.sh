@@ -21,3 +21,5 @@ docker run --rm --name "$BUILDER_TMP" -v "$WDIR/gopath:/root/go" -v "$WDIR/minit
 
 docker build -t doridian/website .
 
+# docker run --cap-add=NET_ADMIN --device=/dev/net/tun --entrypoint /bin/sh --rm -it doridian/website
+

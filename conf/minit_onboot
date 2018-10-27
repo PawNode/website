@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+/sbin/tunctl -t tap-ws0 -u wsvpn -g wsvpn
+/sbin/ifconfig tap-ws0 10.0.0.1 netmask 255.0.0.0 mtu 1280 up
+
+/bin/echo > /tmp/dhcpd.leases
+/bin/chown dhcp:dhcp /tmp/dhcpd.leases
+
