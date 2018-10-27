@@ -1,0 +1,3 @@
+0 0 0 / /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off; error_log /dev/null; pid /tmp/nginx.pid;"
+0 0 0 / /opt/wsvpn/start.sh
+
