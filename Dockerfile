@@ -1,20 +1,18 @@
-FROM alpine as builder
-
-RUN apk add go build-base git npm nodejs
+FROM doridian/alpine-builder as builder
 
 COPY builder.sh /root/builder.sh
 COPY jsip_app/main.ts /root/jsip_main.ts
 
 RUN /root/builder.sh
 
-FROM alpine
+FROM doridian/alpine-minit
+MAINTAINER Doridian
 
 RUN apk add --no-cache nginx shadow dhcp unbound iptables ip6tables
 RUN groupadd -g 1000 wsvpn && useradd -u 1000 -g 1000 wsvpn && mkdir -p /home/wsvpn && chown wsvpn:wsvpn /home/wsvpn
 
 COPY conf/minit_services /minit/services
 COPY conf/minit_onboot /minit/onboot
-COPY --from=builder /root/minit/minit /minit/minit
 COPY conf/iptables.v4 /minit/iptables.v4
 COPY conf/iptables.v6 /minit/iptables.v6
 
@@ -33,6 +31,4 @@ COPY jsip_app/index.html /var/www/html/
 COPY site/ /var/www/wsvpn/
 
 EXPOSE 80 9000
-
-ENTRYPOINT ["/minit/minit"]
 
