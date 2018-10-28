@@ -18,11 +18,6 @@ COPY --from=builder /root/minit/minit /minit/minit
 COPY conf/iptables.v4 /minit/iptables.v4
 COPY conf/iptables.v6 /minit/iptables.v6
 
-COPY --from=builder /root/jsip/dist/ /var/www/html/dist/
-COPY jsip_app/index.html /var/www/html/
-
-COPY site/ /var/www/wsvpn/
-
 COPY conf/nginx_site.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /root/jsip/nginx_push.conf /etc/nginx/push.conf
 
@@ -31,6 +26,11 @@ COPY --from=builder /root/go/bin/server /opt/wsvpn/server
 
 COPY conf/dhcpd.conf /etc/dhcp/dhcpd.conf
 COPY conf/unbound.conf /etc/unbound/master.conf
+
+COPY --from=builder /root/jsip/dist/ /var/www/html/dist/
+COPY jsip_app/index.html /var/www/html/
+
+COPY site/ /var/www/wsvpn/
 
 EXPOSE 80 9000
 
