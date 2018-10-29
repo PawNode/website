@@ -11,10 +11,10 @@ MAINTAINER Doridian
 RUN apk add --no-cache nginx shadow dhcp unbound iptables ip6tables
 RUN groupadd -g 1000 wsvpn && useradd -u 1000 -g 1000 wsvpn && mkdir -p /home/wsvpn && chown wsvpn:wsvpn /home/wsvpn
 
-COPY conf/minit_services /minit/services
-COPY conf/minit_onboot /minit/onboot
-COPY conf/iptables.v4 /minit/iptables.v4
-COPY conf/iptables.v6 /minit/iptables.v6
+COPY conf/minit_services /etc/minit/services
+COPY conf/minit_onboot /etc/minit/onboot
+COPY conf/iptables.v4 /etc/minit/iptables.v4
+COPY conf/iptables.v6 /etc/minit/iptables.v6
 
 COPY conf/nginx_site.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /root/jsip/nginx_push.conf /etc/nginx/push.conf
