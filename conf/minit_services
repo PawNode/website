@@ -1,5 +1,0 @@
-TERM 0 0 / /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off; error_log /dev/stderr; pid /tmp/nginx.pid;"
-TERM wsvpn wsvpn / /opt/wsvpn/server --listen=:9000 --subnet=10.0.0.0/24 --tap-noconf --tap --tap-name tap-ws0 --tap-persist --tap-no-ifconfig
-TERM 0 0 / /usr/sbin/dhcpd -f -d -cf /etc/dhcp/dhcpd.conf --no-pid -lf /tmp/dhcpd.leases -user dhcp -group dhcp
-TERM 0 0 / /usr/sbin/unbound -d -c /etc/unbound/master.conf
-
