@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PawNode</title>
+		<link rel="stylesheet" href="style.css"></style>
+	</head>
+	<input class="viewRadio" type="radio" name="view" id="view-main-radio" checked />
+	<input class="viewRadio" type="radio" name="view" id="view-resources-radio" />
+	<input class="viewRadio" type="radio" name="view" id="view-peering-radio" />
+	<div id="headerLeftWelcome">
+		Welcome to PawNode
+	</div>
+	<div id="headerLeft">
+		<div class="viewLabel" id="view-main-label"><label for="view-main-radio">Main</label></div>
+		<div class="viewLabel" id="view-resources-label"><label for="view-resources-radio">Resources</label></div>
+		<div class="viewLabel" id="view-peering-label"><label for="view-peering-radio">Peering</label></div>
+	</div>
+	<div id="headerRightContainer">
+		<div id="headerRight">
+			<img src="icon.png" />
+		</div>
+	</div>
+	<div id="viewDivContainer">
+		<div class="viewDiv" id="view-main-div">
+			PawNode is an experimental, currently IPv6-only, Anycast network<br />
+			Currently we operate PoPs in Seattle, New Jersey, Vancouver and Frankfurt<br />
+			For any inquiries, please contact <a target="_blank" href="mailto:hostmaster@pawnode.com">hostmaster@pawnode.com</a><br />
+		</div>
+		<div class="viewDiv" id="view-resources-div">
+			<h2>ASN</h2>
+			<ul>
+				<li><a href="https://bgp.he.net/AS207618">AS207618</a> (Securebit)</li>
+			</ul>
+			<h2>IPv4</h2>
+			<ul>
+				<li>None</li>
+			</ul>
+			<h2>IPV6</h2>
+			<ul>
+				<li>2a09:4c2:1a::/48 (Securebit)</li>
+				<li>2a0e:7d44:f000::/40 (Red Panda Network)</li>
+				<li>2a0f:9400:7310::/44 (Free Range Cloud)</li>
+			</ul>
+		</div>
+		<div class="viewDiv" id="view-peering-div">
+			<h2>Peering requirements:</h2>
+			<ul>
+				<li>Public ASN</li>
+				<li>Available IPv6 space (at least /48) to use</li>
+				<li>Only route traffic destined to the PawNode network</li>
+			</ul>
+			<h2>Available connection methods:</h2>
+			<ul>
+				<li>EVIX</li>
+				<li>Unmetered</li>
+				<li>GRE or other tunnel</li>
+			</ul>
+			For peering inquiries contact <a target="_blank" href="mailto:peering@pawnode.com">peering@pawnode.com</a>
+		</div>
+	</div>
+</html>
